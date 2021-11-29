@@ -1,0 +1,88 @@
+
+<h1>Adds</h1>
+
+<% if can? :create, Add %>
+<%= link_to 'New Add', new_add_path, class: 'btn btn-primary' %>
+<% end %>
+
+<% @adds.each do |add| %>
+<!--  <div class="card mb-3" style="max-width: 540px;">-->
+<!--    <div class="row g-0">-->
+<!--      <div class="col-md-4">-->
+<!--        <img src="<%#= add.img %>" class="img-fluid rounded-start" width="200px" height="100px">-->
+<!--      </div>-->
+<!--      <div class="col-md-8">-->
+<!--        <div class="card-body">-->
+<!--          <h5 class="card-title">Card title</h5>-->
+<!--          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>-->
+<!--          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+  <div class="card">
+    <div class="card-body">
+      <img src="<%= add.img %>" class="img-fluid rounded-start" width="200px" height="100px">
+      <h5 class="card-title"><%= link_to add.title, add_path(add) %></h5>
+      <p class="card-text"><%= truncate(add.body, length: 60) %></p>
+      <p class="card-text">Author: <%= truncate(add.user.username, length: 60) %></p>
+      <% if can? :update, add %>
+      <%= link_to 'Show', add, class: 'btn btn-primary' %>
+      <%= link_to 'Edit', edit_add_path(add), class: 'btn btn-primary' %>
+      <% end %>
+      <% if can? :destroy, add %>
+      <%= link_to 'Destroy', add, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary' %>
+      <% end %>
+<!--      <%#= link_to 'Show', add %></td>-->
+<!--      <%#= link_to 'Edit', edit_add_path(add) %></td>-->
+      <%#= link_to 'Destroy', add, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%#= link_to 'Edit', edit_add_path(add), class: 'card-link' %>
+      <%#= link_to 'Edit', edit_add_path(add), class: 'card-link' %>
+      <%#= link_to 'Edit', edit_add_path(add), class: 'card-link' %>
+    </div>
+  </div>
+<% end %>
+
+<!--<table class="table">-->
+<!--  <thead>-->
+<!--    <tr>-->
+<!--      <th>Image</th>-->
+<!--      <th>Title</th>-->
+<!--      <th>Body</th>-->
+<!--      <th>User</th>-->
+<!--      <th colspan="3"></th>-->
+<!--    </tr>-->
+<!--  </thead>-->
+
+<!--  <tbody>-->
+    <%# @adds.each do |add| %>
+<!--      <tr>-->
+<!--        <td><img src="<%#= add.img %>" class="img-thumbnail" width="100px" height="100px"></td>-->
+<!--        <td><%#= add.title %></td>-->
+<!--        <td><%#= add.body %></td>-->
+<!--        <td><%#= add.user.username %></td>-->
+<!--        <td>-->
+          <%# if can? :update, add %>
+            <%#= link_to 'Show', add %>
+            <%#= link_to 'Edit', edit_add_path(add) %>
+        <%# end %>
+<!--        </td>-->
+<!--        <td>-->
+          <%# if can? :destroy, add %>
+            <%#= link_to 'Destroy', add, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%# end %>
+<!--        </td>-->
+<!--        <td><%#= link_to 'Show', add %></td>-->
+<!--        <td><%#= link_to 'Edit', edit_add_path(add) %></td>-->
+<!--        <td><%#= link_to 'Destroy', add, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+<!--      </tr>-->
+
+    <%# end %>
+<!--  </tbody>-->
+<!--</table>-->
+
+<br>
+<%# if can? :create, Add %>
+  <%#= link_to 'New add', new_add_path %>
+<%# end %>
+<%#= link_to 'New Add', new_add_path %>

@@ -1,0 +1,24 @@
+<p>
+  <strong>Title:</strong>
+  <%= @add.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @add.body %>
+</p>
+
+<p>
+  <strong>Img:</strong>
+  <img src="<%= @add.img %>" class="img-fluid rounded-start" width="500px" height="500px">
+<!--  commented img is too big-->
+  <%#= image_tag(@add.img.url, alt: 'Image') if @add.img? %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @add.user.username %>
+</p>
+
+<%= link_to 'Edit', edit_add_path(@add) %> |
+<%= link_to 'Back', adds_path %>
