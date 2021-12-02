@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :adds, dependent: :destroy
+  # has_many :comments, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -25,7 +26,7 @@ class User < ApplicationRecord
   end
 
   def assign_role
-    self.role = Role.find_by name: 'Regular' if role.nil?
+    self.role = Role.find_by name: 'Registered' if role.nil?
   end
 
   def admin?

@@ -26,13 +26,17 @@
       <h5 class="card-title"><%= link_to add.title, add_path(add) %></h5>
       <p class="card-text"><%= truncate(add.body, length: 60) %></p>
       <p class="card-text">Author: <%= truncate(add.user.username, length: 60) %></p>
+      <% if can? :read, add %>
+        <%= link_to 'Show', add, class: 'btn btn-primary' %>
+      <% end %>
       <% if can? :update, add %>
-      <%= link_to 'Show', add, class: 'btn btn-primary' %>
+      <%#= link_to 'Show', add, class: 'btn btn-primary' %>
       <%= link_to 'Edit', edit_add_path(add), class: 'btn btn-primary' %>
       <% end %>
       <% if can? :destroy, add %>
       <%= link_to 'Destroy', add, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary' %>
       <% end %>
+
 <!--      <%#= link_to 'Show', add %></td>-->
 <!--      <%#= link_to 'Edit', edit_add_path(add) %></td>-->
       <%#= link_to 'Destroy', add, method: :delete, data: { confirm: 'Are you sure?' } %>

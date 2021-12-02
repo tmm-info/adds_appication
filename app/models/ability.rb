@@ -24,8 +24,8 @@ class Ability
       can :destroy, Add do |add|
         add.try(:user) == user
       end
-    elsif user.regular?
-      can :read, Add
+    # elsif user.regular?
+    #   can :read, Add
     end
     #
     # The first argument to `can` is the action you are giving the user

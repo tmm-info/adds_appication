@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  resources :comments
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
   scope '/admin' do
     resources :users
   end
-  resources :adds
+  resources :adds do
+    resources :comments
+  end
   resources :users
   resources :roles
   authenticated :user do

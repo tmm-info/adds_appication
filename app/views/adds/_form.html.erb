@@ -1,33 +1,33 @@
 <%= form_with(model: add) do |form| %>
   <% if add.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(add.errors.count, "error") %> prohibited this add from being saved:</h2>
+      <h2 class="text-danger"><%= pluralize(add.errors.count, "error") %> prohibited this add from being saved:</h2>
 
-      <ul>
+      <ul class="list-group">
         <% add.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+          <li class="list-group-item list-group-item-danger"><%= error.full_message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :body %>
-    <%= form.text_field :body %>
+    <%= form.text_field :body, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :img %>
-    <%= form.file_field :img %>
+    <%= form.file_field :img, class: 'form-control' %>
   </div>
 
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Save add", class: 'btn btn-primary' %>
   </div>
 <% end %>

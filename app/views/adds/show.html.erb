@@ -19,6 +19,21 @@
   <strong>User:</strong>
   <%= @add.user.username %>
 </p>
+<%= link_to 'Edit', edit_add_path(@add), class: 'btn btn-primary' %>
+<%= link_to 'Back', adds_path, class: 'btn btn-primary' %>
 
-<%= link_to 'Edit', edit_add_path(@add) %> |
-<%= link_to 'Back', adds_path %>
+<div class="card my-1">
+  <div class="card-body">
+    <p class="font-weight-bold">Comments</p>
+    <%= form_with(model: [@add, @add.comments.build]) do |f| %>
+      <div class="form-group">
+        <%= f.label 'New comment' %>
+        <%= f.text_area :body, class: 'form-control' %>
+      </div>
+      <%= f.submit 'Submit', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
+<%= render @add.comments %>
+
+
