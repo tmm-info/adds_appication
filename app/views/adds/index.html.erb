@@ -5,6 +5,8 @@
 <%= link_to 'New Add', new_add_path, class: 'btn btn-primary' %>
 <% end %>
 
+
+
 <% @adds.each do |add| %>
 <!--  <div class="card mb-3" style="max-width: 540px;">-->
 <!--    <div class="row g-0">-->
@@ -46,7 +48,6 @@
     </div>
   </div>
 <% end %>
-
 <!--<table class="table">-->
 <!--  <thead>-->
 <!--    <tr>-->
@@ -85,7 +86,6 @@
 <!--  </tbody>-->
 <!--</table>-->
 
-<br>
 <%# if can? :create, Add %>
   <%#= link_to 'New add', new_add_path %>
 <%# end %>

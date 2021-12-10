@@ -7,7 +7,17 @@ class AddsController < ApplicationController
   # GET /adds or /adds.json
   def index
     @adds = Add.all
-  end
+    @users = User.all
+    if params[:search]
+    search_term = params[:search].downcase.gsub(/\s+/, "")
+    @adds = Add.all.select{ |add|
+      add.title.downcase.include?(search_term) ||
+        add.body.downcase.include?(search_term) }
+    else
+      @adds
+    end
+
+end
 
   # GET /adds/1 or /adds/1.json
   def show; end

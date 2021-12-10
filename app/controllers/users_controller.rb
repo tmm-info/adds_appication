@@ -6,6 +6,11 @@ class UsersController < ApplicationController
   # GET /users or /users.json
   def index
     @users = User.all
+    if params[:term].present?
+      @users = User.search_by_user(params[:term]).with_pg_search_highlight
+    else
+      @users = User.all
+    end
   end
 
   # GET /users/1 or /users/1.json

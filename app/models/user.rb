@@ -1,4 +1,22 @@
 class User < ApplicationRecord
+  include PgSearch::Model
+  scope :sorted, ->{ order(username: :asc) }
+
+  pg_search_scope :search_by_user,
+                  against: [
+                    :username,
+                    :email
+                  ],
+                  using: {
+                    tsearch: {
+                      prefix: true,
+                      negation: true,
+                      highlight: {
+                        start_sel: '<b>',
+                        stop_sel: '</b>',
+                      }
+                    }
+                  }
   has_many :adds, dependent: :destroy
   # has_many :comments, dependent: :destroy
   # Include default devise modules. Others available are:
